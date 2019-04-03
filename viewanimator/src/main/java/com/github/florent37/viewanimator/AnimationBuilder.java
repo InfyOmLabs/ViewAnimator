@@ -7,7 +7,6 @@ import android.animation.ValueAnimator;
 import android.graphics.Path;
 import android.graphics.PathMeasure;
 import android.support.annotation.IntRange;
-import android.support.v4.view.ViewCompat;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;

@@ -3,6 +3,7 @@ package com.github.florent37.viewanimator;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ValueAnimator;
+import android.os.Build;
 import android.support.annotation.IntDef;
 import android.support.annotation.IntRange;
 import android.view.View;
@@ -41,6 +42,32 @@ public class ViewAnimator {
 
     private ViewAnimator prev = null;
     private ViewAnimator next = null;
+
+    public ViewAnimator pause() {
+        if (this.animatorSet != null) {
+            if (Build.VERSION.SDK_INT >= 19) {
+                this.animatorSet.pause();
+            }
+        } else if (this.prev != null) {
+            this.prev.pause();
+        }
+        return this;
+    }
+
+    public long getDuration() {
+        return this.duration;
+    }
+
+    public ViewAnimator resume() {
+        if (this.animatorSet != null) {
+            if (Build.VERSION.SDK_INT >= 19) {
+                this.animatorSet.resume();
+            }
+        } else if (this.prev != null) {
+            this.prev.resume();
+        }
+        return this;
+    }
 
     protected AnimatorSet createAnimatorSet() {
         List<Animator> animators = new ArrayList<>();
